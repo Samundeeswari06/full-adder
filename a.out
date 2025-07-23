@@ -1,0 +1,112 @@
+#! /usr/local/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/local/lib/ivl/system.vpi";
+:vpi_module "/usr/local/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/local/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/local/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/local/lib/ivl/va_math.vpi";
+:vpi_module "/usr/local/lib/ivl/v2009.vpi";
+S_0x21bc3020 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0x21bc4450 .scope module, "tb_full_adder" "tb_full_adder" 3 3;
+ .timescale 0 0;
+v0x21bed330_0 .var "A", 0 0;
+v0x21bed3f0_0 .var "B", 0 0;
+v0x21bed4c0_0 .var "Cin", 0 0;
+v0x21bed5c0_0 .net "carry", 0 0, L_0x21beddd0;  1 drivers
+v0x21bed690_0 .net "sum", 0 0, L_0x21bed870;  1 drivers
+S_0x21bd54b0 .scope module, "fa" "full_adder" 3 6, 4 2 0, S_0x21bc4450;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /INPUT 1 "Cin";
+    .port_info 3 /OUTPUT 1 "sum";
+    .port_info 4 /OUTPUT 1 "carry";
+L_0x21bed730 .functor XOR 1, v0x21bed330_0, v0x21bed3f0_0, C4<0>, C4<0>;
+L_0x21bed870 .functor XOR 1, L_0x21bed730, v0x21bed4c0_0, C4<0>, C4<0>;
+L_0x21bed9d0 .functor AND 1, v0x21bed330_0, v0x21bed3f0_0, C4<1>, C4<1>;
+L_0x21beda40 .functor AND 1, v0x21bed3f0_0, v0x21bed4c0_0, C4<1>, C4<1>;
+L_0x21bedb40 .functor OR 1, L_0x21bed9d0, L_0x21beda40, C4<0>, C4<0>;
+L_0x21bedc00 .functor AND 1, v0x21bed330_0, v0x21bed4c0_0, C4<1>, C4<1>;
+L_0x21beddd0 .functor OR 1, L_0x21bedb40, L_0x21bedc00, C4<0>, C4<0>;
+v0x21bd5b10_0 .net "A", 0 0, v0x21bed330_0;  1 drivers
+v0x21beca40_0 .net "B", 0 0, v0x21bed3f0_0;  1 drivers
+v0x21becb00_0 .net "Cin", 0 0, v0x21bed4c0_0;  1 drivers
+v0x21becbd0_0 .net *"_ivl_0", 0 0, L_0x21bed730;  1 drivers
+v0x21beccb0_0 .net *"_ivl_10", 0 0, L_0x21bedc00;  1 drivers
+v0x21becde0_0 .net *"_ivl_4", 0 0, L_0x21bed9d0;  1 drivers
+v0x21becec0_0 .net *"_ivl_6", 0 0, L_0x21beda40;  1 drivers
+v0x21becfa0_0 .net *"_ivl_8", 0 0, L_0x21bedb40;  1 drivers
+v0x21bed080_0 .net "carry", 0 0, L_0x21beddd0;  alias, 1 drivers
+v0x21bed1d0_0 .net "sum", 0 0, L_0x21bed870;  alias, 1 drivers
+    .scope S_0x21bc4450;
+T_0 ;
+    %vpi_call/w 3 14 "$monitor", "Time=%0d A=%b B=%b Cin=%b => sum=%b carry=%b", $time, v0x21bed330_0, v0x21bed3f0_0, v0x21bed4c0_0, v0x21bed690_0, v0x21bed5c0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x21bed330_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x21bed3f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x21bed4c0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x21bed330_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x21bed3f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x21bed4c0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x21bed330_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x21bed3f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x21bed4c0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x21bed330_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x21bed3f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x21bed4c0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x21bed330_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x21bed3f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x21bed4c0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x21bed330_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x21bed3f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x21bed4c0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x21bed330_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x21bed3f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x21bed4c0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x21bed330_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x21bed3f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x21bed4c0_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call/w 3 23 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "testbench.sv";
+    "design.sv";
